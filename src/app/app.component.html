@@ -1,0 +1,88 @@
+<div class='container'>
+  <div *ngIf='!fav_view'>
+    <mat-form-field class="search-form">
+      <input matInput placeholder="search movies" value="" [(ngModel)]='movie' (keyup.enter)='handleSearch()'>
+    </mat-form-field>
+    <button mat-raised-button color="accent" (click)='handleSearch()'>Search</button>
+    <button mat-button color="primary" (click)='fav_view = !fav_view'>View Favorites</button>
+  </div>
+
+  <div class='back-search'>
+    <button *ngIf='fav_view' mat-raised-button color="primary" (click)='fav_view = !fav_view'>Back To Search</button>
+  </div>
+
+  <div class='no_search_result' *ngIf='!searchResult && !fav_view'>
+    <p>Search Movies Here!!</p>
+  </div>
+
+
+  <div class='search_result' *ngIf='searchResult && !fav_view'>
+    <h3>Search Results</h3>
+    <hr>
+
+    <div *ngIf = 'searchResult.length == 0'>
+      <p>
+        No Search result found
+      </p>
+    </div>
+
+    <mat-card class='movie-card' *ngFor='let temp of searchResult'>
+      <div class='title'>{{temp.title}}</div>
+
+      <div class='overview'>
+        <p>{{temp.overview}}</p>
+      </div>
+
+      <div class='poster' *ngIf='temp.poster_path'>
+        <img [src]="'http://image.tmdb.org/t/p/w185/'+temp.poster_path" />
+      </div>
+
+      <div class='movie-info'>
+        <p><strong>Release Date: </strong>{{temp.release_date}}</p>
+        <p><strong>Rating: </strong>{{temp.vote_average}}<span class='vote-count'>({{temp.vote_count}})</span></p>
+      </div>
+
+      <div class='favourite'>
+        <i *ngIf='!temp.favorite_flag' class="material-icons" (click)='addFavorite(temp)'>favorite_border</i>
+        <i *ngIf='temp.favorite_flag' class="material-icons fav_icon" (click)='removeFavorite(temp)'>favorite</i>
+
+      </div>
+
+
+    </mat-card>
+  </div>
+
+  <div *ngIf='favorite_movies.length==0 && fav_view'>
+    <h3>Favorite Movies</h3>
+    <hr>
+    <p>No movies are added in to Favorites</p>
+  </div>
+
+  <div class='search_result' *ngIf='favorite_movies.length>=1 && fav_view'>
+    <h3>Favorite Movies</h3>
+    <hr>
+    <mat-card class='movie-card' *ngFor='let temp of favorite_movies'>
+      <div class='title'>{{temp.title}}</div>
+
+      <div class='overview'>
+        <p>{{temp.overview}}</p>
+      </div>
+
+      <div class='poster' *ngIf='temp.poster_path'>
+        <img [src]="'http://image.tmdb.org/t/p/w185/'+temp.poster_path" />
+      </div>
+
+      <div class='movie-info'>
+        <p><strong>Release Date: </strong>{{temp.release_date}}</p>
+        <p><strong>Rating: </strong>{{temp.vote_average}}<span class='vote-count'>({{temp.vote_count}})</span></p>
+      </div>
+
+      <div class='favourite'>
+        <i *ngIf='temp.favorite_flag' class="material-icons fav_icon" (click)='removeFavorite(temp)'>delete</i>
+      </div>
+
+
+    </mat-card>
+  </div>
+
+</div>

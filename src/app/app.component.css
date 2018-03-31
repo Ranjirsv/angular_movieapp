@@ -1,0 +1,74 @@
+.container{
+    width:100%;
+    font-family: 'Philosopher', sans-serif;
+}
+
+.search-form{
+    width:30%;
+    margin-left: 30%;
+    margin-top:3%;
+}
+.search_result{
+    width:60%;
+    margin-left: 20%;
+}
+
+.no_search_result{
+     width:60%;
+     margin-left: 20%;
+     text-align:center;
+}
+
+.movie-card{
+    margin:20px;
+    font-family: 'Philosopher', sans-serif;
+}
+
+.title{
+    width:98.5%;
+    padding:10px;
+    background-color: lightskyblue;
+    color:#fff;
+}
+
+.overview{
+    font-size: 15px;
+    text-align: justify;
+}
+
+.poster{
+    width:100%;
+    text-align:center;
+}
+
+.movie-info{
+    font-size:15px;
+    text-align:center;
+}
+
+.vote-count{
+    margin-left:2px;
+    color:rgba(0, 0, 0, 0.57);
+}
+
+.favourite{
+    width:100%;
+   
+}
+
+.favourite i {
+        margin-left: 98%;
+}
+
+.fav_icon{
+    color:red;
+}
+
+.back-search{
+    width:100%;
+    margin-left:80%;
+    margin-top:20px;
+}
+i{
+    cursor: pointer;
+}
